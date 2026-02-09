@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<Product> findById(String productId) {
-        return productRepository.findById(productId); // Delegate to repository
+        return productRepository.findById(productId);
     }
 
     @Override
