@@ -180,4 +180,29 @@ class ProductRepositoryTest {
 
         assertFalse(products.hasNext());
     }
+
+    @Test
+    void testFindById() {
+        Product product = new Product();
+        product.setProductName("Nintendo Switch");
+        product.setProductQuantity(20);
+        productRepository.create(product);
+        product.setProductId("123e4567-e89b-12d3-a456-556642440000");
+
+        assertTrue(productRepository.findById("123e4567-e89b-12d3-a456-556642440000").isPresent());
+    }
+
+    @Test
+    void testUpdateProductNotFound() {
+        Product existingProduct = new Product();
+        productRepository.create(existingProduct);
+        existingProduct.setProductId("123e4567-e89b-12d3-a456-556642440000");
+
+        Product strangerProduct = new Product();
+        strangerProduct.setProductId("679e96f1-6734-406e-8260-21af6af63bc2");
+
+        Product result = productRepository.update(strangerProduct);
+
+        assertNull(result);
+    }
 }
