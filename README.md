@@ -1,46 +1,19 @@
-Name: Ahmad Faiq Fawwaz Abdussalam
+Nama: Ahmad Faiq Fawwaz Abdussalam
 
 NPM: 2406397706
 
-Class: Adpro - B
+Kelas: Adpro - B
 
-## Reflection 1
-> You already implemented two new features using Spring Boot. Check again your source code
-and evaluate the coding standards that you have learned in this module. Write clean code
-principles and secure coding practices that have been applied to your code. If you find any
-mistake in your source code, please explain how to improve your code. 
+Link Deploy: [Deployment](consistent-sally-b-ahmadfaiqfawwaza-2406397706-e5d8eabf.koyeb.app/)
 
-### Clean Code Principles Applied:
-1. Meaningful Names: I have used descriptive and meaningful names for classes, methods, and variables to enhance code readability. For example, I named my variables and methods based on their functionality, making it easier to understand their purpose at a glance.
-2. Function: I ensured that each function performs a single task or responsibility. This makes the code modular and easier to maintain. For instance, I created separate methods for handling different features, which helps in isolating functionality.
-3. Comments: I avoid unnecessary comments by writing self-explanatory code.
-4. Objects and Data Structures: The Product class serves as a clean data model, using private fields and public accessors to focus strictly on data storage. Meanwhile, the Product Repository abstracts the data access logic, providing a standardized interface for other layers to interact with the database.
-5. Error Handling: I implemented proper error handling mechanisms to manage exceptions gracefully. In editProductPage, if a product is not found, a RuntimeException is thrown.
+## Reflection Module 2
 
-### Secure Coding Practices Applied:
-1. Exception Handling: I have implemented proper exception handling to prevent the application from crashing due to unexpected errors. For example, in the editProductPage method, I check if the product exists before proceeding.
-2. UUID for IDs: I used UUIDs for product IDs to ensures that product IDs are globally unique and reduces the risk of ID collisions.
+> 1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
 
-### Areas for Improvement:
-1. Input Validation: I could improve the code by adding more robust input validation to ensure that user inputs are sanitized and validated before processing. This would help prevent potential security vulnerabilities such as SQL injection or cross-site scripting (XSS) attacks.
-2. Custom Exception Handling: Instead of using generic exceptions like RuntimeException, I could create custom exception classes to provide more specific error handling and improve code clarity.
+Langkah pertama yang saya lakukan adalah membersihkan bagian import dengan menghapus org.springframework.web.bind.annotation.* yang tidak digunakan. Sebagai gantinya, saya menerapkan import yang jauh lebih spesifik, seperti @GetMapping, @PostMapping, dan @PathVariable. Selanjutnya, saya melakukan optimasi pada ProductService dengan menghilangkan modifier 'public' pada setiap metodenya. Hal ini dilakukan karena secara teknis semua metode di dalam sebuah interface sudah bersifat publik secara default. Melalui serangkaian perubahan ini, struktur kode kini menjadi jauh lebih rapi, efisien, dan memiliki tingkat keterbacaan yang lebih baik.
 
-## Reflection 2
-> 1. After writing the unit test, how do you feel? How many unit tests should be made in a
-     class? How to make sure that our unit tests are enough to verify our program? It would be
-     good if you learned about code coverage. Code coverage is a metric that can help you
-     understand how much of your source is tested. If you have 100% code coverage, does
-     that mean your code has no bugs or errors?
+> 2. Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current
+     implementation has met the definition of Continuous Integration and Continuous
+     Deployment? Explain the reasons (minimum 3 sentences)!
 
-After writing the unit tests, I feel more confident about the reliability and correctness of my code. Writing unit tests allows me to verify that individual components of my application function as expected, which helps in identifying bugs early in the development process. The number of unit tests that should be made in a class depends on the complexity and functionality of that class. Ideally, I aim to cover all possible scenarios, including edge cases, to ensure comprehensive testing. To ensure that our unit tests are sufficient to verify our program, I focus on achieving high code coverage while also considering the quality of the tests. Code coverage is a useful metric that indicates the percentage of code that is executed during testing. However, having 100% code coverage does not necessarily mean that the code is free of bugs or errors. It is possible to have high coverage with poorly written tests that do not effectively validate the functionality of the code. Therefore, it is essential to write meaningful tests that not only cover the code but also assert the expected behavior and outcomes.
-
-> 2. Suppose that after writing the CreateProductFunctionalTest.java along with the
-     corresponding test case, you were asked to create another functional test suite that
-     verifies the number of items in the product list. You decided to create a new Java class
-     similar to the prior functional test suites with the same setup procedures and instance
-     variables.
-     What do you think about the cleanliness of the code of the new functional test suite? Will
-     the new code reduce the code quality? Identify the potential clean code issues, explain
-     the reasons, and suggest possible improvements to make the code cleaner!
-
-Creating a new functional test suite with similar setup procedures and instance variables can lead to code duplication, which is a potential clean code issue. Code duplication can reduce code quality as it makes the codebase harder to maintain and increases the risk of inconsistencies. If changes are needed in the setup procedures or instance variables, they would have to be made in multiple places, increasing the likelihood of errors. By extracting common setup procedures into a base class and adopting the Page Object Model, we can make the code cleaner, more modular, and easier to maintain.
+Implementasi workflow CI/CD pada GitHub Actions telah sepenuhnya memenuhi standar Continuous Integration dan Continuous Deployment. Di sisi CI, setiap push ke main branch secara otomatis memicu rangkaian pengujian, laporan code coverage, serta pemeriksaan kualitas kode melalui PMD dan integrasi Scoreboard. Proses ini menjamin bahwa setiap perubahan kode terintegrasi dengan baik dan bebas dari potensi bug statis sedini mungkin. Untuk aspek CD, aplikasi Spring Boot dikemas menggunakan Dockerfile multi-stage untuk mengoptimalkan efisiensi image sebelum dideploy secara otomatis ke Koyeb. Alur kerja yang terotomatisasi ini berhasil menciptakan pipeline yang konsisten, mengurangi risiko kesalahan manual, dan mempercepat pengiriman fitur baru ke tangan pengguna.
