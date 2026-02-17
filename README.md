@@ -4,7 +4,7 @@ NPM: 2406397706
 
 Kelas: Adpro - B
 
-Link Deploy: [Deployment](consistent-sally-b-ahmadfaiqfawwaza-2406397706-e5d8eabf.koyeb.app/)
+Link Deploy: [Deployment](https://consistent-sally-b-ahmadfaiqfawwaza-2406397706-e5d8eabf.koyeb.app/)
 
 ## Reflection Module 2
 
