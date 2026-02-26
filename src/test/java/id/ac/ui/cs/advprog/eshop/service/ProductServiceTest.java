@@ -19,13 +19,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
-import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
+import id.ac.ui.cs.advprog.eshop.repository.ProductRepositoryImpl;
 
 
 @ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
     @Mock
-    ProductRepository productRepository;
+    ProductRepositoryImpl productRepository;
 
     @InjectMocks
     ProductServiceImpl productService;
