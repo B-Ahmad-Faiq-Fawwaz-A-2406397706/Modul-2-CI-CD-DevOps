@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Result</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-2">
+    <h2>Payment Submitted</h2>
+    <table class="table table-bordered mb-3">
+        <tr>
+            <th>Order ID</th>
+            <td th:text="${order.id}"></td>
+        </tr>
+        <tr>
+            <th>Payment Method</th>
+            <td th:text="${method}"></td>
+        </tr>
+        <tr>
+            <th>Order Status</th>
+            <td th:text="${order.status}"></td>
+        </tr>
+    </table>
+    <a th:href="@{/order/history}" class="btn btn-primary">Back to History</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
