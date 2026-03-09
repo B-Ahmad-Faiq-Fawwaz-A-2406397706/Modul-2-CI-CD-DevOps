@@ -22,6 +22,9 @@ Langkah pertama yang saya lakukan adalah membersihkan bagian import dengan mengh
 Implementasi workflow CI/CD pada GitHub Actions telah sepenuhnya memenuhi standar Continuous Integration dan Continuous Deployment. Di sisi CI, setiap push ke main branch secara otomatis memicu rangkaian pengujian, laporan code coverage, serta pemeriksaan kualitas kode melalui PMD dan integrasi Scoreboard. Proses ini menjamin bahwa setiap perubahan kode terintegrasi dengan baik dan bebas dari potensi bug statis sedini mungkin. Untuk aspek CD, aplikasi Spring Boot dikemas menggunakan Dockerfile multi-stage untuk mengoptimalkan efisiensi image sebelum dideploy secara otomatis ke Koyeb. Alur kerja yang terotomatisasi ini berhasil menciptakan pipeline yang konsisten, mengurangi risiko kesalahan manual, dan mempercepat pengiriman fitur baru ke tangan pengguna.
 </details>
 
+<details>
+<summary>Reflection Module 3</summary>
+
 ## Reflection Module 3
 
 > 1. Explain what principles you apply to your project!
@@ -73,3 +76,19 @@ Tanpa mengikuti prinsip SOLID, kita mungkin memiliki kode yang sangat tergantung
 3. Code Bloat (Kelebihan Kode)
 
 Tanpa menerapkan prinsip SOLID, kode dapat menjadi berantakan dan sulit untuk dipahami. Misalnya, jika kita tidak mengikuti Interface Segregation Principle, kita mungkin memiliki interface yang terlalu besar dengan banyak metode yang tidak relevan untuk semua implementasi, sehingga membuat kode menjadi sulit untuk dipahami dan dipelihara, karena pengembang harus memahami semua metode dalam interface tersebut bahkan jika mereka hanya membutuhkan sebagian kecil dari fungsionalitas yang disediakan.
+</details>
+
+## Reflection Module 4
+
+> 1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best 
+Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this 
+TDD flow is useful enough for you or not. If not, explain things that you need to do next time 
+you make more tests. 
+
+Alur TDD yang diikuti dalam tutorial ini cukup membantu karena memaksa saya untuk memikirkan ekspektasi dan perilaku kode sebelum menulisnya, sehingga desain kelas menjadi lebih terarah dan bug dapat terdeteksi lebih awal. Mengacu pada pertanyaan reflektif Percival (2017), pengujian yang dibuat sudah mencakup happy path dan unhappy path, namun masih bisa diperluas untuk kasus-kasus edge yang lebih spesifik seperti input null atau karakter khusus pada author. 
+
+> 2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully
+     followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you
+     create more tests. 
+
+Untuk prinsip F.I.R.S.T., unit test yang dibuat sudah cukup Fast karena tidak bergantung pada database nyata, sudah Independent karena setiap test memiliki setUp sendiri, Repeatable karena hasilnya konsisten di environment manapun, Self-validating karena menggunakan assertion yang jelas, serta Timely karena ditulis sebelum implementasi, sehingga secara keseluruhan prinsip F.I.R.S.T. sudah terpenuhi dengan baik meskipun ke depannya cakupan test perlu ditambah untuk meningkatkan branch coverage.
