@@ -53,7 +53,7 @@ class OrderControllerTest {
 
         mockMvc.perform(get("/order/create"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("order/createOrder"))
+                .andExpect(view().name("createOrder"))
                 .andExpect(model().attributeExists("products"));
     }
 
@@ -61,7 +61,7 @@ class OrderControllerTest {
     void testGetHistoryFormPage() throws Exception {
         mockMvc.perform(get("/order/history"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("order/historyForm"));
+                .andExpect(view().name("historyForm"));
     }
 
     @Test
@@ -72,7 +72,7 @@ class OrderControllerTest {
         mockMvc.perform(post("/order/history")
                         .param("author", "Safira Sudajat"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("order/historyList"))
+                .andExpect(view().name("historyList"))
                 .andExpect(model().attributeExists("orders"))
                 .andExpect(model().attribute("author", "Safira Sudajat"));
     }
@@ -84,7 +84,7 @@ class OrderControllerTest {
         mockMvc.perform(post("/order/history")
                         .param("author", "Unknown"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("order/historyList"))
+                .andExpect(view().name("historyList"))
                 .andExpect(model().attribute("orders", new ArrayList<>()));
     }
 }
