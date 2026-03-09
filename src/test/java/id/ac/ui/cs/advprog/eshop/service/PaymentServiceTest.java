@@ -94,7 +94,6 @@ class PaymentServiceTest {
     void testSetStatusSuccessUpdatesOrder() {
         Payment payment = new Payment("pay-004", "BANK_TRANSFER", bankTransferData);
         doReturn(payment).when(paymentRepository).save(any(Payment.class));
-        doReturn(order).when(orderService).findById(order.getId());
 
         Payment result = paymentService.setStatus(payment, order, "SUCCESS");
 
@@ -106,7 +105,6 @@ class PaymentServiceTest {
     void testSetStatusRejectedUpdatesOrder() {
         Payment payment = new Payment("pay-005", "BANK_TRANSFER", bankTransferData);
         doReturn(payment).when(paymentRepository).save(any(Payment.class));
-        doReturn(order).when(orderService).findById(order.getId());
 
         Payment result = paymentService.setStatus(payment, order, "REJECTED");
 
