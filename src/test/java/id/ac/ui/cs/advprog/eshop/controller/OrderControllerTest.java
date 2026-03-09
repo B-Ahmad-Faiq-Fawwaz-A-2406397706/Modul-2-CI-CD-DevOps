@@ -87,4 +87,26 @@ class OrderControllerTest {
                 .andExpect(view().name("historyList"))
                 .andExpect(model().attribute("orders", new ArrayList<>()));
     }
+
+    @Test
+    void testGetPayOrderPage() throws Exception {
+        doReturn(order).when(orderService).findById("13652556-012a-4c07-b546-54eb1396d79b");
+
+        mockMvc.perform(get("/order/pay/13652556-012a-4c07-b546-54eb1396d79b"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("payOrder"))
+                .andExpect(model().attributeExists("order"));
+    }
+
+    @Test
+    void testPostPayOrder() throws Exception {
+        doReturn(order).when(orderService).findById("13652556-012a-4c07-b546-54eb1396d79b");
+
+        mockMvc.perform(post("/order/pay/13652556-012a-4c07-b546-54eb1396d79b")
+                        .param("method", "BANK_TRANSFER"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("payResult"))
+                .andExpect(model().attributeExists("order"))
+                .andExpect(model().attribute("method", "BANK_TRANSFER"));
+    }
 }
